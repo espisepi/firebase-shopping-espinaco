@@ -1,3 +1,10 @@
+# This project is based on these projects:
+    https://github.com/basir/node-react-ecommerce/
+    JournalApp from Udemy Course by Fernando Herrera -> React: De cero a experto ( Hooks y MERN )
+
+    Thanks to the authors.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

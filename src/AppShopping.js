@@ -1,6 +1,6 @@
 import React from 'react';
 
-function App() {
+function AppShopping() {
   return (
     <div className="App">
       <h1>HOLA</h1>
@@ -8,4 +8,4 @@ function App() {
   );
 }
 
-export default App;
+export default AppShopping;
