@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Provider } from 'react-redux';
+
+import { store } from './store/store';
+import { AppRouter } from './routers/AppRouter';
 
 function AppShopping() {
+
   return (
-    <div className="App">
-      <h1>HOLA</h1>
-    </div>
+    <Provider store={ store }>
+      <AppRouter />
+    </Provider>
   );
 }
 
