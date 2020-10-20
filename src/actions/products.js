@@ -1,10 +1,10 @@
 import { types } from "../types/types";
-import { loadProducts } from '../helpers/loadProducts';
+import * as productService from '../services/productService';
 
 
 export const startLoadingProducts = () => {
     return async( dispatch ) => {
-        const products = await loadProducts();
+        const products = await productService.findAll();
         dispatch( setProducts( products ) );
     }
 }

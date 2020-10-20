@@ -1,6 +1,6 @@
 import { db } from '../firebase/firebase-config';
 
-export const loadProducts = async () => {
+export const findAll = async () => {
     const productsSnap = await db.collection(`products/`).get();
     const products = [];
 
@@ -12,4 +12,10 @@ export const loadProducts = async () => {
     });
 
     return products;
-} 
+}
+
+export const findById = async (productId) => {
+  const res = await db.doc(`products/${productId}`);
+  console.log(res);
+  return {};
+}
