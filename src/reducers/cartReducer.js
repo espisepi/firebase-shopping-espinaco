@@ -2,30 +2,26 @@ import { types } from '../types/types';
 
 /*
     {
-        cartItems: Array<Product>,
+        cartProducts: Array<Product>,
     }
 */
 const initialState = {
-    cartItems: []
+    cartProducts: []
 }
 
 export const cartReducer = ( state = initialState, action ) => {
 
     switch (action.type) {
 
-        case types.cartAddItem:
-            const item = action.payload; // item = {...product, quantity}
+        case types.cartAddProduct:
+            const product = action.payload; // item = {...product, quantity}
+            // Si el producto existe en el carrito lo elimino para sustituirlo por el nuevo
+            const newCartProducts = state.cartProducts.filter( alreadyInCart => alreadyInCart.id !== product.id );
+            newCartProducts.push(product);
 
-            const product = state.cartItems.find(x => x === item);
-            if(product) {
-                return {
-                    ...state,
-                    cartItems: state.cartItems.map(x => x === product ? item : x)
-                };
-            }
-            return { // Devuelves una COPIA MODIFICADA del state, no modificas el state directamente
+            return { // Devuelve una COPIA MODIFICADA del state, no modificas el state directamente
                 ...state,
-                cartItems: [ ...state.cartItems, item ] // Devuelves una COPIA del array, no el array original
+                cartProducts: newCartProducts // Devuelve una COPIA del array, no el array original
             };
 
         default:

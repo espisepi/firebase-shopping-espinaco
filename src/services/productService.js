@@ -16,6 +16,9 @@ export const findAll = async () => {
 
 export const findById = async (productId) => {
   const productSnap = await db.doc(`products/${productId}`).get();
-  const product = productSnap.data();
-  return product;
+  const data = productSnap.data();
+  return {
+    id: productId,
+    ...data
+  };
 }
