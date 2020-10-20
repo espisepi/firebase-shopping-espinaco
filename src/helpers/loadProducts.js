@@ -1,47 +1,15 @@
-
-const getProducts = () => [
-    {
-        _id: '1',
-        name: 'Slim Shirt',
-        category: 'Shirts',
-        image: '/images/d1.jpg',
-        price: 60,
-        brand: ' Nike',
-        rating: 4.5,
-        numReviews: 10
-      },
-      {
-        _id: '2',
-        name: 'Fit Shirt',
-        category: 'Shirts',
-        image: '/images/d1.jpg',
-        price: 50,
-        brand: ' Nike',
-        rating: 4.2,
-        numReviews: 5
-      },
-      {
-        _id: '3',
-        name: 'Best Pants',
-        category: 'Pants',
-        image: '/images/d1.jpg',
-        price: 70,
-        brand: ' Nike',
-        rating: 4.5,
-        numReviews: 8
-      }, {
-        _id: '4',
-        name: 'Best Pants',
-        category: 'Pants',
-        image: '/images/d1.jpg',
-        price: 70,
-        brand: ' Nike',
-        rating: 4.5,
-        numReviews: 8
-      },
-]
+import { db } from '../firebase/firebase-config';
 
 export const loadProducts = async () => {
-    const products = getProducts();
+    const productsSnap = await db.collection(`products/`).get();
+    const products = [];
+
+    productsSnap.forEach( snapHijo => {
+      products.push({
+        id: snapHijo.id,
+        ...snapHijo.data()
+      })
+    });
+
     return products;
 } 
